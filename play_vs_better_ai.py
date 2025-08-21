@@ -2,12 +2,21 @@ import numpy as np
 from connect_four_gymnasium import ConnectFourEnv
 from betterai_player import BetterAIPlayer
 
+# ANSI escape codes for colors
+RED = "\033[91m"
+BLUE = "\033[94m"
+RESET = "\033[0m"
+
 def render_board_sideways(board):
     """
     Pretty-print the board in a vertical Connect Four style.
     Board is 6x7 with values 0 (empty), 1 (human), -1 (AI).
     """
-    symbols = {0: ".", 1: "X", -1: "O"}  # FIX: handle -1 for AI
+    symbols = {
+        0: ".",
+        1: f"{RED}X{RESET}",   # Human (X) in red
+        -1: f"{BLUE}O{RESET}", # AI (O) in blue
+    }
     rows, cols = board.shape
 
     print("\n   0   1   2   3   4   5   6")
